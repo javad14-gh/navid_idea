@@ -1,1 +1,0 @@
-# navid_idea
