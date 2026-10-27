@@ -3,125 +3,185 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>بررسی اولیه ایده نوید</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap">
+<title>گزارش بررسی ایده نوید</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#f7f8fa;--card:#fff;--text:#1c2430;--muted:#5b6678;--line:#dde2ea;--accent:#1f3864;
---strong:#d4f1dc;--mixed:#fff1c2;--weak:#fcd5d5;--unk:#e6e9ee;--warn:#b42318}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
---bg:#12161c;--card:#1b222b;--text:#e6eaf0;--muted:#9aa6b8;--line:#2e3846;--accent:#8fb0ff;
---strong:#1d4a2b;--mixed:#5a4a14;--weak:#5c2222;--unk:#2e3846;--warn:#ff8a80}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#12161c;--card:#1b222b;--text:#e6eaf0;--muted:#9aa6b8;--line:#2e3846;--accent:#8fb0ff;
---strong:#1d4a2b;--mixed:#5a4a14;--weak:#5c2222;--unk:#2e3846;--warn:#ff8a80}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#f2f6f7;--card:#fff;--ink:#14233b;--muted:#566377;--line:#d9e2e6;--teal:#13917f;--teal-d:#0c6b5d;--sun:#f2b84b;--coral:#d9532b;
+--ok:#cfeee6;--mid:#fdeec2;--bad:#f8d6cc;--unk:#e3e8ee;--hero1:#14233b;--hero2:#0c6b5d}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0e1620;--card:#162230;--ink:#e8eef3;--muted:#98a7b8;--line:#263646;--teal:#3fcfb8;--teal-d:#3fcfb8;--sun:#f5c565;--coral:#ff8a65;
+--ok:#134a40;--mid:#5a4713;--bad:#5c2a1c;--unk:#2a3846;--hero1:#0a1019;--hero2:#0c4a40}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","Tahoma","DejaVu Sans",sans-serif;line-height:1.8;font-size:15px}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}
-h1{font-size:22px;margin:8px 0 4px;color:var(--accent)}
-h2{font-size:17px;margin:28px 0 10px;color:var(--accent)}
-.sub{color:var(--muted);font-size:13px;margin:0 0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
-.verdict{border-right:5px solid var(--warn)}
-.verdict b.v{color:var(--warn);font-size:18px}
-.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
-table{border-collapse:collapse;width:100%;min-width:560px}
-th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;font-size:14px}
-th{background:var(--accent);color:var(--bg);font-weight:700}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn","Tahoma",sans-serif;line-height:1.9;font-size:16px}
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:calc(48px + env(safe-area-inset-top,0px)) 20px 64px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:-60px;bottom:-90px;width:300px;height:300px;border-radius:50%;border:34px solid rgba(242,184,75,.22)}
+.wrap{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero small{display:block;color:#bfe3dc;font-size:14px;margin-bottom:10px}
+.hero h1{font-size:clamp(26px,5vw,40px);line-height:1.5;margin:0 0 20px;font-weight:800}
+.verdict{display:inline-block;background:var(--sun);color:#14233b;font-weight:800;padding:6px 18px;border-radius:999px;font-size:17px}
+.hero p{max-width:640px;margin:16px 0 0;color:#e3f1ee}
+main{max-width:900px;margin:0 auto;padding:0 20px 56px}
+section{margin-top:44px}
+h2{font-size:22px;margin:0 0 6px;font-weight:800;color:var(--teal-d);border-right:5px solid var(--sun);padding-right:12px}
+.lead{color:var(--muted);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.grid .card{margin:0}
+.card h3{margin:0 0 6px;font-size:17px}
+.card ul{margin:6px 0 0;padding-right:20px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:10px 14px;text-align:right;vertical-align:top;border-bottom:1px solid var(--line);font-size:15px}
+th{background:var(--hero1);color:#fff;font-weight:600}
 tr:last-child td{border-bottom:0}
-.tag{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12px;white-space:nowrap}
-.Strong{background:var(--strong)}.Mixed{background:var(--mixed)}.Weak{background:var(--weak)}.Unknown{background:var(--unk)}
-ul{margin:6px 0;padding-right:20px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.calc label{display:block;font-size:13px;color:var(--muted)}
-.calc input{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit;direction:ltr;text-align:left}
-.out{grid-column:1/-1;font-size:18px;font-weight:700;color:var(--accent)}
-.note{font-size:12.5px;color:var(--muted)}
-.src{direction:ltr;text-align:left;font-size:12px;color:var(--muted);word-break:break-all}
-@media (max-width:520px){.calc{grid-template-columns:1fr}}
+.pill{display:inline-block;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap}
+.ok{background:var(--ok)}.mid{background:var(--mid)}.bad{background:var(--bad)}.unk{background:var(--unk)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:2px 12px;font-size:14px}
+.warn{border-right:5px solid var(--coral)}
+.steps{list-style:none;padding:0;margin:0;position:relative}
+.steps li{position:relative;padding:0 52px 22px 0}
+.steps li::before{content:"";position:absolute;right:17px;top:34px;bottom:0;width:2px;background:var(--line)}
+.steps li:last-child::before{display:none}
+.steps b.n{position:absolute;right:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:16px}
+.steps h3{margin:0;font-size:17px}
+.steps p{margin:2px 0 0;color:var(--muted)}
+.note{font-size:13.5px;color:var(--muted)}
+.x{color:var(--coral);font-weight:600}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:0 20px calc(32px + env(safe-area-inset-bottom,0px))}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
 </style>
 </head>
 <body>
+<header class="hero"><div class="wrap">
+<small>بررسی اولیه · ۲۷ اکتبر ۲۰۲۶ · تهیه‌شده توسط پوریا برای نسیم و نوید</small>
+<h1>سیستم هوش مصنوعی برای طب ورزشی و ورزش‌درمانی</h1>
+<span class="verdict">حکم: ادامه بده، با نسخه‌ی خیلی کوچیک‌تر</span>
+<p>تقاضا برای خدمت نوید ثابت شده، چون خودش همین الان این کارها رو با شاگردهاش می‌کنه. چیزی که هنوز باید ثابت بشه اینه که AI دقیقاً چه چیزی رو بهتر یا ارزون‌تر می‌کنه و شاگردها هر روز از اپ استفاده می‌کنن یا نه.</p>
+</div></header>
+ 
 <main>
-<h1>بررسی اولیه ایده نوید</h1>
-<p class="sub">سیستم هوش مصنوعی برای طب ورزشی و ورزش‌درمانی · ۲۴ اکتبر ۲۰۲۶ · بررسی اولیه، نه تصمیم نهایی</p>
-
-<div class="card verdict">
-<b class="v">حکم: Test first</b><br>
-جهت ایده درسته، ولی چند ایده بزرگ توی هم پیچیده شده. قبل از ساختن، باید به یه نسخه خیلی کوچیک‌تر برسه.
-</div>
-
-<h2>ایده در یک نگاه</h2>
-<div class="card">
-برنامه بلندمدت (۲ تا ۳ سال): غربالگری کامل و برنامه کاملاً شخصی (تمرین، فیزیوتراپی، ماساژ، حرکات اصلاحی، پروتکل‌های ۶ ماهه)، یک ایجنت AI اختصاصی برای هر کاربر، ایجنت‌هایی که جای مربی‌ها کار کنن و سایت و پیج برند رو هم پیش ببرن، و در نهایت چند برند برای بخش‌های مختلف (یوگا، فیزیو، کایروپراکتیک، ورزش تیمی، سالمندان و...) شبیه مدل Inditex.
-<p class="note" style="margin:8px 0 0">فرض‌ها: بازار هدف (کشور) و وضعیت فعلی کار نوید (تعداد مشتری، حضوری یا آنلاین) مشخص نیست.</p>
-</div>
-
-<h2>بررسی از زاویه‌های مختلف</h2>
-<div class="tw"><table>
-<tr><th>زاویه</th><th>رتبه</th><th>یافته اصلی</th><th>بزرگ‌ترین خطر</th></tr>
-<tr><td>مشکل و کاربر</td><td><span class="tag Mixed">Mixed</span></td><td>نیاز واقعیه (کم‌تحرکی، درد اسکلتی‌عضلانی)، ولی فرض «چون AI کارها رو می‌گیره مردم بیشتر ورزش می‌کنن» یه فرض بلندمدته نه واقعیت.</td><td>کاربر دقیق مشخص نیست: ورزشکار؟ بیمار؟ سالمند؟</td></tr>
-<tr><td>بازار و رقبا</td><td><span class="tag Weak">Weak تا Mixed</span></td><td>بازار واقعی و پولداره ولی شلوغه و بازیگرهای بزرگ دارن تجمیع می‌شن.</td><td>تمایز روشن نیست.</td></tr>
-<tr><td>اقتصاد</td><td><span class="tag Unknown">Unknown</span></td><td>مدل درآمد هنوز مشخص نیست.</td><td>فیزیوتراپی و ماساژ حضوری با AI مقیاس‌پذیر نمیشه.</td></tr>
-<tr><td>فنی</td><td><span class="tag Mixed">Mixed</span></td><td>برنامه شخصی با AI شدنیه، ولی ایجنت مستقل برای مدیریت برند ریسکیه.</td><td>کیفیت و ایمنی توصیه‌های درمانی.</td></tr>
-<tr><td>اجرا و دامنه</td><td><span class="tag Weak">Weak</span></td><td>۲ تا ۳ سال و چند برند با تیم کوچیک زیاده.</td><td>پراکندگی و scope creep.</td></tr>
-<tr><td>ریسک</td><td><span class="tag Weak">Weak</span></td><td>ریسک‌های قانونی و حقوقی (پایین‌تر).</td><td>ادعای درمانی بدون مجوز.</td></tr>
-<tr><td>جایگزین‌ها</td><td><span class="tag Strong">Strong</span></td><td>می‌شه با یه نسخه خیلی کوچیک‌تر شروع کرد.</td><td>-</td></tr>
-</table></div>
-<div class="card" style="margin-top:12px"><b>مدافع شیطان:</b> شرکت‌های میلیارددلاری با داده بالینی دارن همین کار رو می‌کنن. تیم کوچیک با ایده «ایجنت برای همه چیز» نمی‌تونه رقابت کنه. تمایز باید دانش، داده یا کانال اختصاصی باشه، نه تعداد برند.</div>
-
-<h2>بازار و رقبا</h2>
-<div class="tw"><table>
-<tr><th>رقیب</th><th>توضیح</th></tr>
-<tr><td>Sword Health</td><td>پلتفرم AI فیزیوتراپی؛ Kaia Health رو به مبلغ ۲۸۵ میلیون دلار خریده. ارزش‌گذاری گزارش‌شده حدود ۴ میلیارد دلار.</td></tr>
-<tr><td>Kaia Health</td><td>مراقبت دیجیتال اسکلتی‌عضلانی؛ اکنون بخشی از Sword.</td></tr>
-<tr><td>Physiotec</td><td>ابزار ابری برای فیزیوتراپ‌ها و مربی‌ها با بیش از ۲۳ هزار تمرین ویدیویی.</td></tr>
-<tr><td>Adapted</td><td>فیزیوتراپ هوش مصنوعی برای ورزشکاران (iOS).</td></tr>
-<tr><td>Trainerize / Fitbod / Freeletics</td><td>پلتفرم‌ها و اپ‌های مربیگری و تمرین شخصی‌شده.</td></tr>
-</table></div>
-<p class="note">برآورد یه شرکت تحقیقات بازار: بازار AI در فیزیوتراپی آمریکا از حدود ۲۲۴ میلیون دلار در ۲۰۲۶ به حدود ۱٫۷ میلیارد دلار تا ۲۰۳۵ می‌رسه (حدود ۲۵٫۳٪ رشد سالانه). این رقم باید با احتیاط خونده بشه.</p>
-<p class="src">Sources: mobihealthnews.com (Sword–Kaia) · stockanalysis.com/private/sword-health · parse.gl/brands/physiotec-app · ycombinator.com (Adapted) · towardshealthcare.com</p>
-
-<h2>اقتصاد: مثال ساده</h2>
-<div class="card">
-<div class="calc">
-<div><label for="p">قیمت اشتراک ماهانه ($)</label><input id="p" type="number" min="0" value="20"></div>
-<div><label for="u">تعداد کاربر پولی</label><input id="u" type="number" min="0" value="1000"></div>
-<div class="out">درآمد سالانه: <span id="r">$240,000</span></div>
-</div>
-<p class="note" style="margin:8px 0 0">اعداد فرضی‌ان و از ویس نوید یا بازار نیومدن. فیزیوتراپی و ماساژ حضوری هزینه ثابت انسانی دارن و با این فرمول مقیاس‌پذیر نیستن. باید روشن بشه ایده «نرم‌افزار با AI» هست یا «خدمات ورزشی با کمک AI».</p>
-</div>
-
-<h2>ریسک‌ها (اگه ۱۲ ماه بعد شکست خورده باشه)</h2>
-<div class="card"><ul>
-<li><b>توصیه غلط به کاربر آسیب‌دیده:</b> فیزیوتراپی و توصیه درمانی معمولاً مجوز و مقررات دارن (بسته به کشور). ایجنت نمی‌تونه جای متخصص مجاز باشه.</li>
-<li><b>پراکندگی:</b> به جای یه محصول خوب، چند برند نیمه‌کاره.</li>
-<li><b>ایجنت‌های بدون کنترل:</b> ایجنتی که مستقل سایت و پیج مدیریت می‌کنه ممکنه محتوای اشتباه یا ادعای پزشکی منتشر کنه.</li>
+<section>
+<h2>ایده و وضعیت فعلی</h2>
+<p class="lead">برنامه‌ی بلندمدت ۲ تا ۳ ساله در بازار طب ورزشی</p>
+<div class="grid">
+<div class="card"><h3>چشم‌انداز نوید</h3><ul>
+<li>غربالگری و برنامه‌ی کاملاً شخصی (تمرین، تغذیه، یوگا، ماساژ، حرکات اصلاحی)</li>
+<li>یک ایجنت AI اختصاصی کنار هر کاربر</li>
+<li>پایش دوره‌ای (آزمایش خون و هورمون، سونوگرافی) زیر نظر تیم</li>
+<li>در نهایت چند برند برای بخش‌های مختلف، شبیه مدل Inditex</li>
 </ul></div>
-
-<h2>معیار کنار گذاشتن</h2>
-<div class="card">اگه نوید نتونه ۵ تا ۱۰ مشتری یا مربی واقعی پیدا کنه که برای نسخه کوچیک حاضر به پرداخت باشن، یا قوانین کشور هدف توصیه درمانی با AI رو اجازه نده: Park یا Drop.</div>
-
-<h2>قدم‌های بعدی</h2>
-<div class="card"><ol style="margin:0;padding-right:20px">
-<li><b>تست اصلی (۱ تا ۲ هفته):</b> ۵ مصاحبه با مشتری یا مربی واقعی. سوال: «اگه یه دستیار AI برنامه شخصی و پیگیری هفتگی بده، چقدر حاضری پول بدی؟»</li>
-<li><b>نسخه خیلی کوچیک (۱ روز بحث):</b> فقط یه گروه، مثلاً مربیگری شخصی‌شده برای شاگردهای نوید با غربالگری ساده، برنامه تمرین و حرکات اصلاحی. بدون فیزیو، ماساژ و چند برند.</li>
-<li><b>پروتکل‌ها (۱ تا ۲ هفته):</b> نوید غربالگری، قوانین ایمنی و موارد ارجاع به پزشک رو مکتوب کنه. بزرگ‌ترین دارایی ایده.</li>
-<li><b>نمونه اولیه (۲ تا ۳ هفته):</b> ایجنت چت با پروتکل‌های نوید روی ۵ شاگرد واقعی، با نظارت خود نوید.</li>
-</ol></div>
-
+<div class="card"><h3>الان چی هست</h3><ul>
+<li>نوید همه‌چیز رو دستی انجام می‌ده: برنامه تمرین و تغذیه، معرفی به آزمایشگاه، پیشنهاد مکمل یا دارو در صورت نیاز</li>
+<li>پیگیری‌ها پراکنده‌ست: واتساپ، تلفن، تلگرام</li>
+<li>بیشتر شاگردها ایرانی‌اند، چند نفر هم از خارج</li>
+</ul></div>
+<div class="card"><h3>کاربر هدف</h3>
+<p style="margin:0">آدم «نرمال» جامعه: کارمند پشت‌میزی، ۶ تا ۸ ساعت نشسته، بدون آسیب یا بیماری، که می‌خواد تناسب و کیفیت زندگی‌ش بهتر بشه.</p></div>
+</div>
+</section>
+ 
+<section>
+<h2>بررسی از چند زاویه</h2>
+<p class="lead">رنگ نشون‌دهنده‌ی قدرت هر بخش در وضعیت فعلیه</p>
+<div class="tw"><table>
+<tr><th>زاویه</th><th>رتبه</th><th>یافته</th><th>بزرگ‌ترین خطر</th></tr>
+<tr><td>مشکل و کاربر</td><td><span class="pill ok">قوی</span></td><td>نیاز واقعیه، کاربر هدف مشخصه و مشتری پولی واقعی هست.</td><td>فرض «AI کار رو می‌گیره پس مردم بیشتر ورزش می‌کنن» فقط یه فرض بلندمدته.</td></tr>
+<tr><td>بازار و رقبا</td><td><span class="pill mid">ضعیف تا متوسط</span></td><td>بازار واقعی و پولداره، ولی شلوغه و بازیگرهای بزرگ دارن تجمیع می‌شن.</td><td>تمایز باید پروتکل و دانش نوید باشه، نه تعداد برند.</td></tr>
+<tr><td>اقتصاد</td><td><span class="pill unk">نامشخص</span></td><td>قیمت و تعداد شاگردها هنوز معلوم نیست.</td><td>ماساژ و آزمایش حضوری با نرم‌افزار مقیاس‌پذیر نیست.</td></tr>
+<tr><td>فنی</td><td><span class="pill mid">متوسط</span></td><td>پایش و پیگیری با AI شدنیه.</td><td>ایمنی و کیفیت توصیه‌ها؛ پذیرش کاربر.</td></tr>
+<tr><td>دامنه و اجرا</td><td><span class="pill bad">ضعیف (نسخه‌ی کامل)</span></td><td>چند برند، مرکز حضوری و ایجنت مستقل با تیم کوچیک زیاده.</td><td>پراکندگی و نیمه‌کاره موندن.</td></tr>
+<tr><td>ریسک</td><td><span class="pill bad">ضعیف</span></td><td>ریسک قانونی بالاست.</td><td>AI که مکمل یا دارو پیشنهاد بده.</td></tr>
+<tr><td>جایگزین‌ها</td><td><span class="pill ok">قوی</span></td><td>می‌شه با یه MVP خیلی کوچیک شروع کرد.</td><td>-</td></tr>
+</table></div>
+<div class="card" style="margin-top:14px"><b>مدافع شیطان:</b> شرکت‌های بزرگ با داده‌ی بالینی همین کار رو می‌کنن و تیم کوچیک با «ایجنت برای همه چیز» نمی‌تونه رقابت کنه. فقط دانش، داده‌ی رفتار شاگردها و رابطه‌ی نزدیک مربی با شاگرد می‌تونه تمایز بسازه.</div>
+</section>
+ 
+<section>
+<h2>بازار و رقبا</h2>
+<div class="chips">
+<span class="chip">Sword Health (خرید Kaia Health به ۲۸۵ میلیون دلار، ارزش‌گذاری حدود ۴ میلیارد دلار)</span>
+<span class="chip">Physiotec</span><span class="chip">Adapted</span>
+<span class="chip">Trainerize</span><span class="chip">Fitbod</span><span class="chip">Freeletics</span>
+<span class="chip">Function Health (حدود ۳۶۵ دلار در سال)</span><span class="chip">Superpower (حدود ۳۴۹ دلار در سال)</span>
+</div>
+<p class="note">پایش خون به‌تنهایی دیگه تمایز نیست و داره ارزون می‌شه. یه برآورد تحقیقات بازار می‌گه بازار AI در فیزیوتراپی آمریکا از حدود ۲۲۴ میلیون دلار در ۲۰۲۶ به حدود ۱٫۷ میلیارد دلار تا ۲۰۳۵ می‌رسه. قیمت‌ها از سایت‌های مقایسه‌ان که خودشون طرف رقابت‌اند، پس عددها رو با احتیاط بخونین.</p>
+</section>
+ 
+<section>
+<h2>ریسک‌های اصلی</h2>
+<div class="grid">
+<div class="card warn"><h3>ریسک قانونی و ایمنی</h3><p style="margin:0">معرفی آزمایشگاه و پیشنهاد مکمل توسط مربی انسانی یه چیزه، ولی ایجنتی که برای تعداد زیادی کاربر مکمل یا دارو پیشنهاد بده چیز دیگه‌ست. قوانین به کشور بستگی داره. دارو و مکمل باید کاملاً زیر نظر نوید یا پزشک تیم بمونه و AI فقط یادآوری کنه.</p></div>
+<div class="card warn"><h3>ماندگاری کاربر</h3><p style="margin:0">ثبت روزانه‌ی غذا و تمرین برای بیشتر کاربرها بعد از چند هفته ول می‌شه. اگه این حل نشه، بقیه‌ی فیچرها ارزشی ندارن.</p></div>
+<div class="card warn"><h3>اقتصاد خدمات</h3><p style="margin:0">ماساژ، مرکز حضوری و آزمایش هزینه‌ی ثابت انسانی دارن. باید روشن بشه این «نرم‌افزار با AI» هست یا «خدمات ورزشی با کمک AI».</p></div>
+<div class="card warn"><h3>حریم خصوصی و پراکندگی</h3><p style="margin:0">عکس غذا، وزن و علائم داده‌ی حساسه. چند برند و ایجنت مستقل هم قبل از یه محصول خوب، خطر نیمه‌کاره موندن داره.</p></div>
+</div>
+</section>
+ 
+<section>
+<h2>پیشنهاد MVP</h2>
+<p class="lead">همون کاری که نوید الان دستی می‌کنه، توی یه PWA ساده و هوشمند. بدون نصب از فروشگاه اپ و مستقل از تلگرام.</p>
+<div class="grid">
+<div class="card"><h3>سمت شاگرد</h3><ul>
+<li>یادآوری وعده‌ها و مکمل (فقط طبق برنامه‌ی نوید)</li>
+<li>ثبت وعده با یک عکس، زمان خودکار</li>
+<li>ثبت ورود و خروج باشگاه (دستی)</li>
+<li>حال‌واحوال روزانه با دکمه‌های سریع</li></ul></div>
+<div class="card"><h3>سمت نوید</h3><ul>
+<li>پرونده‌ی هر شاگرد در یک جا</li>
+<li>داشبورد درصد رعایت هفتگی و موارد نیازمند توجه</li>
+<li>خلاصه‌ی AI و پیش‌نویس پیام برای تأیید نوید</li>
+<li>هشدار فوری برای علائم مهم</li></ul></div>
+<div class="card"><h3>فعلاً بیرون</h3><ul class="x">
+<li>پیشنهاد مکمل و دارو توسط AI</li>
+<li>تحلیل پزشکی آزمایش</li>
+<li>ماساژ و مرکز حضوری</li>
+<li>چند برند و ایجنت مستقل</li>
+<li>ردیابی خودکار لوکیشن</li></ul></div>
+</div>
+</section>
+ 
+<section>
+<h2>اصول طراحی برای اینکه کاربر واقعاً ثبت کنه</h2>
+<div class="grid">
+<div class="card"><h3>سریع و ساده</h3><p style="margin:0">هر ثبت حداکثر ۵ ثانیه. گزینه‌ی «نخوردم» یا «یادم رفت». ثبت ناقص بهتر از ثبت نشده‌ست.</p></div>
+<div class="card"><h3>یادآوری هوشمند</h3><p style="margin:0">به ساعت‌های واقعی هر کاربر وصل باشه و بعد از ثبت دیگه تکرار نشه.</p></div>
+<div class="card"><h3>نوید توی چرخه</h3><p style="margin:0">جواب کوتاه مربی به گزارش شاگرد معمولاً قوی‌ترین عامل ماندگاریه.</p></div>
+<div class="card"><h3>شروع تدریجی</h3><p style="margin:0">هفته‌ی اول عکس وعده‌ها، هفته‌ی دوم تمرین، هفته‌ی سوم حال‌واحوال.</p></div>
+</div>
+<div class="card warn" style="margin-top:14px"><b>درصد رعایت و بخش احوال:</b> درصد رعایت از روی عکس دقیق نیست، پس تعریفش ساده باشه (وعده سر وقت ثبت شد و شامل منبع پروتئین بود) و تحلیل AI فقط پیشنهاد به نوید باشه. در بخش احوال AI توصیه‌ی پزشکی نمی‌کنه؛ علائم هشداردهنده فوراً به نوید هشدار می‌ده و به شاگرد پیام ثابت مراجعه به پزشک یا اورژانس نشون داده می‌شه. فهرست علائم رو نوید مشخص کنه.</div>
+<p class="note">نکات فنی برای ایران: دسترسی هاست و دامنه از داخل ایران از اول تست بشه، فراخوانی AI فقط از سرور باشه، و نوتیفیکیشن روی iOS فقط بعد از افزودن PWA به صفحه‌ی اصلی کار می‌کنه.</p>
+</section>
+ 
+<section>
+<h2>تست دو هفته‌ای</h2>
+<p class="lead">برای بررسی ایده لازم نیست چند ماه صبر کنین</p>
+<ol class="steps">
+<li><b class="n">۱</b><h3>جلسه‌ی یک‌ساعته با نوید</h3><p>ثبت کارهای هفته‌ی گذشته‌ی ۲ تا ۳ شاگرد و زمان هرکدوم، تعداد شاگردها و قیمت‌ها، و فهرست علائم هشداردهنده.</p></li>
+<li><b class="n">۲</b><h3>انتخاب ۳ تا ۵ شاگرد آزمایشی</h3><p>از شاگردهای فعلی نوید.</p></li>
+<li><b class="n">۳</b><h3>نسخه‌ی حداقلی، ۱ تا ۲ هفته</h3><p>حتی فقط عکس وعده و یادآوری، و سنجش واقعی.</p></li>
+</ol>
+<div class="grid" style="margin-top:8px">
+<div class="card"><h3>معیار موفقیت</h3><ul>
+<li>چند درصد روزها ثبت می‌شه؟ (مهم‌ترین عدد کل پروژه)</li>
+<li>نوید چند دقیقه در هفته برای هر شاگرد وقت کمتری می‌ذاره؟</li>
+<li>داشبورد چیزی نشون داد که نوید از قلم انداخته بود؟</li></ul></div>
+<div class="card warn"><h3>معیار کنار گذاشتن</h3><p style="margin:0">اگه شاگردها ثبت روزانه رو ادامه ندن، یا بیشتر کار نوید قضاوت خودش باشه و چیزی قابل سپردن نباشه، یا قوانین کشور هدف اجازه نده: ایده یا دامنه‌ش رو بازنگری کنین.</p></div>
+</div>
+</section>
+ 
+<section>
 <h2>سوال‌های باز</h2>
 <div class="card"><ul>
-<li>بازار هدف کجاست (ایران، ترکیه یا جهانی)؟</li>
-<li>الان نوید چند مشتری داره و کارش حضوریه یا آنلاین؟</li>
+<li>نوید الان چند شاگرد فعال داره و هرکدوم ماهی چقدر می‌دن؟</li>
+<li>بازار اصلی ایرانه، ترکیه، یا جهانی؟ این روی قوانین، پرداخت و هاست اثر مستقیم داره.</li>
+<li>کدوم بخش کار نوید تکراری و وقت‌گیره؟</li>
+<li>نقش هرکس: نوید (پروتکل و نظارت)، پوریا (ساخت فنی)، نسیم (؟)</li>
 </ul></div>
+</section>
 </main>
-<script>
-(function(){
-var p=document.getElementById('p'),u=document.getElementById('u'),r=document.getElementById('r');
-function f(){var v=(parseFloat(p.value)||0)*(parseFloat(u.value)||0)*12;r.textContent='$'+Math.round(v).toLocaleString('en-US');}
-p.addEventListener('input',f);u.addEventListener('input',f);f();
-})();
-</script>
+<footer>بررسی اولیه است و تصمیم نهایی نیست. عددهای بازار و قیمت رقبا از منابع عمومی گرفته شده و باید دوباره بررسی بشن.</footer>
 </body>
 </html>
